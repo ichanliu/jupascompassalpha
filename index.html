@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="搜尋 2026/27 JUPAS 課程、查閱官方收生要求與資料年度，並為公式已核實及支援的課程估算 DSE 加權分數。"
+    />
+    <meta name="theme-color" content="#f6f7f3" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="JUPAS Compass — 課程與 DSE 計分" />
+    <meta property="og:description" content="查閱 JUPAS 課程、官方來源與資料年度，使用已核實公式估算 DSE 分數。" />
+    <meta property="og:url" content="https://ichanliu.github.io/jupascompass/" />
+    <title>JUPAS Compass — 課程與 DSE 計分</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Sans+HK:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./src/theme.js"></script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script type="module" src="./src/app.js"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="JUPAS Compass 首頁">
+        <span class="brand-mark" aria-hidden="true">J</span>
+        <span class="brand-name">JUPAS<span>COMPASS</span></span>
+      </a>
+      <nav class="topnav" aria-label="主選單">
+        <a class="nav-active" href="#programmes">課程目錄</a>
+        <a href="#calculator">DSE 計分器</a>
+        <a href="#data-note">資料來源</a>
+      </nav>
+      <div class="topbar-meta"><span class="live-dot"></span> 2026/27 申請 · 2027/28 入學</div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切換深色模式" aria-pressed="false" title="切換深色模式">
+        <svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M20.2 15.1A8.4 8.4 0 0 1 8.9 3.8 8.6 8.6 0 1 0 20.2 15Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+        <svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.7" />
+          <path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+        </svg>
+        <span class="theme-toggle-label">深色</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> JUPAS ADMISSIONS, MADE CLEAR</div>
+          <h1>揀課程，<span>有數有據。</span></h1>
+          <p>九所院校 · 官方課程編號 · 明確標示公式年度與資料限制</p>
+        </div>
+        <div class="hero-aside">
+          <div class="hero-aside-icon" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none">
+              <circle cx="21" cy="21" r="13" stroke="currentColor" stroke-width="2" />
+              <path d="m31 31 9 9M15 22l4 4 8-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div>
+            <strong>來源與年度清楚標示</strong>
+            <span>未核實的公式不作估算</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="overview" aria-label="目錄概覽">
+        <div class="overview-main">
+          <span class="overview-label">官方課程目錄</span>
+          <strong id="programme-count">—</strong>
+          <span class="overview-footnote">個課程 · 來自 JUPAS 官方目錄</span>
+        </div>
+        <div class="overview-stat">
+          <span class="stat-icon stat-violet" aria-hidden="true">⌂</span>
+          <strong>9</strong>
+          <span>所參與院校</span>
+        </div>
+        <div class="overview-stat">
+          <span class="stat-icon stat-green" aria-hidden="true">✓</span>
+          <strong id="verified-count">0</strong>
+          <span>已核實計分方式</span>
+        </div>
+        <div class="overview-updated">
+          <span>目錄更新至</span>
+          <strong id="updated-date">—</strong>
+          <a href="https://www.jupas.edu.hk/en/programmes-offered/" target="_blank" rel="noreferrer">查看官方目錄 ↗</a>
+        </div>
+      </section>
+
+      <section class="content-layout" id="programmes">
+        <div class="catalogue">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow eyebrow-dark">PROGRAMME DIRECTORY</div>
+              <h2>探索課程</h2>
+            </div>
+            <span class="result-count" id="result-count">載入課程中…</span>
+          </div>
+
+          <label class="searchbox" for="programme-search">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.7" />
+              <path d="m16 16 4.2 4.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+            </svg>
+            <input id="programme-search" type="search" placeholder="搜尋課程名稱、JS 編號或院校…" autocomplete="off" />
+            <kbd>⌘ K</kbd>
+          </label>
+
+          <div class="filter-row">
+            <div class="institution-filters" id="institution-filters" aria-label="按院校篩選"></div>
+            <label class="funding-filter">
+              <span class="sr-only">課程資助類別</span>
+              <select id="funding-filter">
+                <option value="all">所有資助類別</option>
+                <option value="UGC-funded">UGC 資助</option>
+                <option value="Self-financing">自資</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="catalogue-info">
+            <span class="catalogue-info-icon" aria-hidden="true">i</span>
+            <p>課程編號及名稱同步自 JUPAS 官方目錄。個別課程的收生要求、加權方法及往年分數，請以院校最新資料為準。</p>
+          </div>
+
+          <div class="programme-list" id="programme-list" aria-live="polite"></div>
+          <div class="pagination-note" id="pagination-note"></div>
+        </div>
+
+        <aside class="calculator" id="calculator">
+          <div class="calculator-top">
+            <div class="calc-mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32" fill="none">
+                <rect x="5" y="3.5" width="22" height="25" rx="4" stroke="currentColor" stroke-width="1.7" />
+                <path d="M10 9h12M10 15h2m4 0h2m4 0h.01M10 21h2m4 0h2m4 0h.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+            <div>
+              <div class="eyebrow eyebrow-dark">DSE SCORE ESTIMATOR</div>
+              <h2>分數計算器</h2>
+            </div>
+          </div>
+          <p class="calc-intro">輸入課程編號及 DSE 成績，計算該課程的加權分數。</p>
+
+          <label class="field-label" for="calc-code">JUPAS 課程編號</label>
+          <div class="code-input-wrap">
+            <span>JS</span>
+            <input id="calc-code" type="text" inputmode="numeric" maxlength="4" placeholder="例如 5101" autocomplete="off" />
+            <button type="button" class="code-search-button" id="find-code" aria-label="搜尋課程編號">↵</button>
+          </div>
+          <div class="selected-programme" id="selected-programme" aria-live="polite">輸入 JS 編號以查找課程。</div>
+
+          <div class="grade-heading">
+            <span class="field-label">你的 DSE 成績</span>
+            <button class="text-button" type="button" id="clear-grades">清除</button>
+          </div>
+          <div class="grade-section-label">核心科</div>
+          <div class="grade-grid" id="core-grade-inputs"></div>
+          <div class="grade-section-label">選修科目（選填）</div>
+          <div class="elective-grade-grid" id="elective-grade-inputs"></div>
+          <div id="category-b-row" hidden></div>
+          <div class="other-language-row">
+            <label for="category-c-exam">丙類語言（只於官方公式適用時計入）</label>
+            <select id="category-c-exam" aria-label="丙類語言科目">
+              <option value="">選擇語言</option>
+            </select>
+            <select id="grade-other-language" aria-label="丙類語言成績" disabled>
+              <option value="">選擇級別</option>
+            </select>
+          </div>
+          <button class="calculate-button" id="calculate-score" type="button">計算加權分數 <span aria-hidden="true">→</span></button>
+
+          <div class="calc-result" id="calc-result" aria-live="polite">
+            <span class="result-icon" aria-hidden="true">!</span>
+            <div class="calc-result-body">
+              <p id="calc-result-message">只有已核實官方公式的課程可計算；不同院校的公式與統計資料可能屬不同入學年度。</p>
+              <div class="score-comparison" id="score-comparison" hidden></div>
+              <button class="result-details-button" id="result-details" type="button" hidden>查看課程詳情與官方來源 ↗</button>
+            </div>
+          </div>
+          <div class="calc-footnote">估算不代表錄取機會或正式遴選結果；中大目前只提供 2026 入學週期公式作歷史參考。</div>
+        </aside>
+      </section>
+
+      <section class="data-note" id="data-note" aria-labelledby="data-note-title">
+        <div class="data-note-icon" aria-hidden="true">i</div>
+        <div class="data-note-copy">
+          <div class="data-note-heading">
+            <strong id="data-note-title">使用指南、資料來源與私隱</strong>
+            <span>本網站為獨立學生資訊工具，並非 JUPAS 或任何院校的官方網站。</span>
+          </div>
+          <div class="guide-grid">
+            <article>
+              <h3>如何使用</h3>
+              <p>搜尋課程名稱、院校或 JS 編號，再選擇課程查看要求、公式及來源。計分器只會為標示「可計算」的課程提供估算；請按欄位輸入 DSE 成績。</p>
+            </article>
+            <article>
+              <h3>如何理解資料</h3>
+              <p>課程目錄、計分公式及歷年收生統計可能來自不同年度，頁面會分別標示。未能核實或尚未支援的公式不會估算；歷年分數不是入學門檻或錄取預測。</p>
+            </article>
+            <article>
+              <h3>成績與私隱</h3>
+              <p>計分在你的瀏覽器內完成，輸入的成績不會上傳或保存。網站只會在瀏覽器記住你選擇的色彩主題；載入課程目錄時會讀取公開資料檔案。</p>
+            </article>
+          </div>
+          <div class="data-note-footer">
+            <span>課程目錄同步日期：<strong id="guide-updated-date">—</strong></span>
+            <a href="https://github.com/ichanliu/jupascompass/issues" target="_blank" rel="noreferrer">回報資料問題 ↗</a>
+          </div>
+        </div>
+        <a class="data-note-official" href="https://www.jupas.edu.hk/en/programmes-offered/" target="_blank" rel="noreferrer">查閱 JUPAS 官方目錄 ↗</a>
+      </section>
+    </main>
+
+    <footer>
+      <a class="brand brand-footer" href="./"><span class="brand-mark" aria-hidden="true">J</span><span class="brand-name">JUPAS<span>COMPASS</span></span></a>
+      <span>為香港學生而設的 JUPAS 課程指南</span>
+      <span>獨立資訊工具 · 非官方網站</span>
+      <a href="https://github.com/ichanliu/jupascompass" target="_blank" rel="noreferrer">網站原始碼 ↗</a>
+    </footer>
+
+    <dialog id="programme-dialog" class="programme-dialog">
+      <button class="dialog-close" type="button" aria-label="關閉">×</button>
+      <div id="programme-detail"></div>
+    </dialog>
+  </body>
+</html>
