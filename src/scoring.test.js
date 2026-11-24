@@ -407,3 +407,39 @@ test("M1 and M2 mutual-exclusion rules do not discard an unselected sixth-subjec
   assert.equal(result.bonus, 0.43);
   assert.equal(result.score, 8.93);
 });
+
+test("applies CUHK Best-selection weightings (e.g. JS4682 M1/M2 x 3.5) and HKU full subject weightings (JS6602)", async () => {
+  const { programmes } = JSON.parse(await readFile(new URL("../data/programmes.json", import.meta.url), "utf8"));
+  const js4682 = programmes.find((item) => item.code === "JS4682");
+  assert.equal(js4682.scoreModel.weightedSelections.length, 1);
+  assert.equal(js4682.scoreModel.weightedSelections[0].weight, 3.5);
+  assert.equal(js4682.scoreStatistics.year, 2026);
+  assert.equal(js4682.scoreStatistics.upperQuartile, 60.75);
+  assert.equal(js4682.scoreStatistics.median, 57.75);
+  assert.equal(js4682.scoreStatistics.lowerQuartile, 56.25);
+
+  const mathResult = calculateAdmissionScore(js4682, {
+    Chinese: "5", English: "4", Mathematics: "5*", M2: "5**", Physics: "5*", Chemistry: "5*", Economics: "5*",
+  });
+  // Official 2026 M row: 8.5 * 3.5 (M2) + 7 (Math) + 7 (Phy) + 7 (Chem) + 7 (Econ) = 57.75
+  assert.equal(mathResult.score, 57.75);
+
+  const js4648 = programmes.find((item) => item.code === "JS4648");
+  assert.deepEqual(
+    [js4648.scoreStatistics.upperQuartile, js4648.scoreStatistics.median, js4648.scoreStatistics.lowerQuartile],
+    [53.75, 49.25, 47],
+  );
+  const js4690 = programmes.find((item) => item.code === "JS4690");
+  assert.deepEqual(
+    [js4690.scoreStatistics.upperQuartile, js4690.scoreStatistics.median, js4690.scoreStatistics.lowerQuartile],
+    [52, 46.75, 45.25],
+  );
+
+  const js6602 = programmes.find((item) => item.code === "JS6602");
+  assert.equal(js6602.scoreModel.subjectWeights["Design and Applied Technology"], 2);
+  const hkuResult = calculateAdmissionScore(js6602, {
+    Chinese: "4", English: "5", Mathematics: "5*", "Design and Applied Technology": "5", Economics: "5", History: "4",
+  });
+  // 2*5.5 (Eng) + 2*7 (Math) + 2*5.5 (DAT) + 1.5*5.5 (Econ) + 1.5*4 (Chi/Hist) = 11 + 14 + 11 + 8.25 + 6 = 50.25
+  assert.equal(hkuResult.score, 50.25);
+});

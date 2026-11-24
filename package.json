@@ -5,11 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "node server.mjs",
-    "build": "node --check server.mjs && node --check src/app.js && node --check src/scoring.js && node --check src/theme.js",
-    "lint": "node --check server.mjs && node --check src/app.js && node --check src/scoring.js && node --check src/scoring.test.js && node --check src/theme.js",
+    "build": "node --check server.mjs && node --check src/app.js && node --check src/profile.js && node --check src/scoring.js && node --check src/theme.js",
+    "lint": "node --check server.mjs && node --check src/app.js && node --check src/profile.js && node --check src/profile.test.js && node --check src/scoring.js && node --check src/scoring.test.js && node --check src/theme.js",
     "start": "node server.mjs",
     "sync:data": "node scripts/sync-admissions-data.mjs && node scripts/sync-jupas-catalog.mjs",
     "sync:admissions": "node scripts/sync-admissions-data.mjs",
     "test": "node --test"
+  },
+  "devDependencies": {
+    "pdfjs-dist": "^6.5.438"
   }
 }

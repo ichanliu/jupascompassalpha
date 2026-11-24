@@ -127,6 +127,34 @@ main { max-width: 1400px; width: 89%; margin: 0 auto; }
 .selected-programme { min-height: 26px; padding-top: 7px; color: #8b958a; font-size: 9px; }
 .selected-programme[data-found="true"] { color: #4c7352; }
 .selected-programme[data-found="false"] { color: #a2574c; }
+.profile-panel { margin-top: 12px; padding: 10px 11px; border: 1px solid #e4e9df; border-radius: 9px; background: #f8faf6; }
+.profile-header { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.profile-title-wrap { display: flex; align-items: center; gap: 6px; min-width: 0; }
+.profile-status { color: #678769; font-size: 8px; white-space: nowrap; }
+.profile-actions { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.profile-actions .text-button:hover:not(:disabled) { color: #3c6546; text-decoration: underline; }
+.profile-actions .text-button:disabled { opacity: .4; cursor: not-allowed; }
+.text-button-danger { color: #a66257; }
+.profile-actions .text-button-danger:hover:not(:disabled) { color: #8c4338; }
+.profile-select-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 6px; margin-top: 7px; }
+.profile-select-row select { width: 100%; height: 32px; padding: 0 7px; border: 1px solid #e1e6de; border-radius: 6px; outline: 0; color: #3d4d3e; background: #fff; font-size: 10px; font-weight: 500; }
+.profile-select-row select:focus { border-color: #9ab19a; }
+.profile-count-badge { padding: 4px 7px; border: 1px solid #e1e8dd; border-radius: 6px; color: #5b735d; background: #eef3ea; font-size: 9px; font-weight: 600; white-space: nowrap; }
+.profile-editor, .profile-confirm { display: grid; gap: 7px; margin-top: 8px; padding-top: 8px; border-top: 1px solid #e5eae1; }
+.profile-editor[hidden], .profile-confirm[hidden] { display: none; }
+.profile-editor input[type="text"] { width: 100%; height: 32px; padding: 0 8px; border: 1px solid #dce3d8; border-radius: 6px; outline: 0; color: #344a37; background: #fff; font-size: 10px; }
+.profile-editor input[type="text"]:focus { border-color: #8ba78e; }
+.profile-copy-check { display: inline-flex; align-items: center; gap: 6px; color: #697669; font-size: 9px; cursor: pointer; }
+.profile-copy-check input { margin: 0; accent-color: #335c41; }
+.profile-confirm > span { color: #964e44; font-size: 9px; font-weight: 500; }
+.profile-editor-actions { display: flex; gap: 6px; }
+.profile-save-btn, .profile-danger-btn, .profile-cancel-btn { flex: 1; height: 28px; border-radius: 6px; cursor: pointer; font-size: 9px; font-weight: 600; }
+.profile-save-btn { border: 0; color: #fff; background: #335c41; }
+.profile-save-btn:hover { background: #244b32; }
+.profile-danger-btn { border: 0; color: #fff; background: #a25146; }
+.profile-danger-btn:hover { background: #893f35; }
+.profile-cancel-btn { border: 1px solid #dfe5dc; color: #687568; background: #fff; }
+.profile-cancel-btn:hover { border-color: #c6d0c3; }
 .grade-heading { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
 .text-button { padding: 0; border: 0; color: #7e9a80; background: transparent; cursor: pointer; font-size: 9px; }
 .grade-section-label { margin-top: 12px; color: #889387; font-size: 9px; }
@@ -276,7 +304,11 @@ footer > span:last-child { margin-left: auto; }
   .other-language-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .other-language-row label { grid-column: 1 / -1; font-size: 11px; }
   .code-input-wrap { height: 46px; }
-  .code-input-wrap input, .searchbox input { font-size: 16px; }
+  .code-input-wrap input, .searchbox input, .profile-editor input[type="text"] { font-size: 16px; }
+  .profile-select-row select { height: 42px; font-size: 14px; }
+  .profile-editor input[type="text"] { height: 40px; }
+  .profile-status, .profile-count-badge, .profile-copy-check, .profile-confirm > span { font-size: 11px; }
+  .profile-save-btn, .profile-danger-btn, .profile-cancel-btn { height: 36px; font-size: 12px; }
   .calculate-button { min-height: 46px; font-size: 13px; }
   .text-button, .code-search-button { min-height: 36px; }
   .data-note { grid-template-columns: 1fr; gap: 10px; padding: 16px; }
@@ -391,6 +423,18 @@ html[data-theme="dark"] .code-search-button { color: #c6dfc3; background: #2d3e3
 html[data-theme="dark"] .text-button, html[data-theme="dark"] .result-details-button { color: #a8cba7; }
 html[data-theme="dark"] .selected-programme[data-found="true"] { color: #a4d0a5; }
 html[data-theme="dark"] .selected-programme[data-found="false"] { color: #e5a89e; }
+html[data-theme="dark"] .profile-panel { border-color: #354238; background: #1a231d; }
+html[data-theme="dark"] .profile-status { color: #9ac69b; }
+html[data-theme="dark"] .profile-select-row select,
+html[data-theme="dark"] .profile-editor input[type="text"] { border-color: #3b473e; color: #d4dfd4; background: #202a23; }
+html[data-theme="dark"] .profile-count-badge { border-color: #3d4e40; color: #bdd9b8; background: #263529; }
+html[data-theme="dark"] .profile-editor, html[data-theme="dark"] .profile-confirm { border-color: #313d34; }
+html[data-theme="dark"] .profile-copy-check { color: #a7b3a7; }
+html[data-theme="dark"] .profile-confirm > span { color: #e5a89e; }
+html[data-theme="dark"] .text-button-danger { color: #d9958b; }
+html[data-theme="dark"] .profile-cancel-btn { border-color: #3b473e; color: #b8c4b8; background: #202a23; }
+html[data-theme="dark"] .profile-save-btn { background: #426d4a; }
+html[data-theme="dark"] .profile-save-btn:hover { background: #527d59; }
 html[data-theme="dark"] .calculate-button { color: #f5faf3; background: #426d4a; }
 html[data-theme="dark"] .calculate-button:hover { background: #527d59; }
 html[data-theme="dark"] .calc-result { border-color: #514936; color: #e0c995; background: #302b20; }

@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
+import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 
 const outputPath = resolve("data/admissions-overrides.json");
 const hkuUrl = "https://admissions.hku.hk/api/hkdse/admission_standard";
@@ -188,7 +189,9 @@ const hkuFormulaModel = (formula, weighting) => {
   const clean = formula.replace(/[¹²³⁴⁵⁶⁷⁸⁹#%^]/g, "")
     .replace(/\s+/g, " ").replace(/\b6\s+th\b/gi, "6th").replace(/\b7\s+th\b/gi, "7th").trim();
   const groups = [];
-  const sourceWeights = weighting ?? {};
+  const sourceWeights = { ...(weighting ?? {}) };
+  const otherWeight = sourceWeights["__other__"];
+  delete sourceWeights["__other__"];
   const allWeighted = clean.includes("with Weighting");
   const parseSubjects = (text) => {
     const names = {
@@ -202,15 +205,21 @@ const hkuFormulaModel = (formula, weighting) => {
   const parseTerm = (term) => {
     const value = term.trim();
     let match = value.match(/^(?:(\d+(?:\.\d+)?)\s*x\s*)?Best\s+of\s+(.+?)\s+with\s+Weighting/i);
-    if (match) return best("指定科目最佳", 1, parseSubjects(match[2]), sourceWeights);
+    if (match) return { ...best("指定科目最佳", 1, parseSubjects(match[2]), sourceWeights), ...(otherWeight ? { weight: otherWeight } : {}) };
     match = value.match(/^(?:(\d+(?:\.\d+)?)\s*x\s*)?Best\s+(\d+)\s+from\s+(.+)/i);
     if (match) return best("指定科目最佳", Number(match[2]), parseSubjects(match[3]), match[1] ? Object.fromEntries(parseSubjects(match[3]).map((s) => [s, Number(match[1])])) : {});
     match = value.match(/^(?:(\d+(?:\.\d+)?)\s*x\s*)?Best\s+Sci\s+Subject/i);
     if (match) return best("最佳理科", 1, ["Biology", "Chemistry", "Physics"], match[1] ? Object.fromEntries(["Biology", "Chemistry", "Physics"].map((s) => [s, Number(match[1])])) : {});
     match = value.match(/^(?:(\d+(?:\.\d+)?)\s*x\s*)?Best\s+Remaining\s+Subject(?:\s+with\s+Weighting)?/i);
-    if (match) return best("其餘最佳科目", 1, null, sourceWeights);
+    if (match) return { ...best("其餘最佳科目", 1, null, sourceWeights), ...(otherWeight ? { weight: otherWeight } : {}) };
     match = value.match(/^(?:(\d+(?:\.\d+)?)\s*x\s*)?Best\s+(\d+)\s+Subjects?(?:\s+with\s+Weighting)?/i);
-    if (match) return best(`最佳 ${match[2]} 科`, Number(match[2]), null, allWeighted || /with Weighting/i.test(value) ? sourceWeights : {});
+    if (match) {
+      const weighted = allWeighted || /with Weighting/i.test(value);
+      return {
+        ...best(`最佳 ${match[2]} 科`, Number(match[2]), null, weighted ? sourceWeights : {}),
+        ...(weighted && otherWeight ? { weight: otherWeight } : {}),
+      };
+    }
     match = value.match(/^(?:(\d+(?:\.\d+)?)\s*x\s*)?Best\s+of\s+(.+)/i);
     if (match) return best("指定科目最佳", 1, parseSubjects(match[2]), match[1] ? Object.fromEntries(parseSubjects(match[2]).map((s) => [s, Number(match[1])])) : {});
     match = value.match(/^(?:(\d+(?:\.\d+)?)\s*x\s*)?(?:(\d+)\s*x\s*)?(.+)$/i);
@@ -409,26 +418,48 @@ function decodeHtml(value) {
 }
 
 function hkuTables(html, className) {
-  const table = html.match(new RegExp(`<table\\b[^>]*class=["'][^"']*\\b${className}\\b[^"']*["'][^>]*>([\\s\\S]*?)<\\/table>`, "i"))?.[1];
-  if (!table) return [];
-  return [...table.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)].map(([, row]) =>
-    [...row.matchAll(/<t[dh]\b[^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(([, cell]) => decodeHtml(cell)));
+  const tables = [...html.matchAll(new RegExp(`<table\\b[^>]*class=["'][^"']*\\b${className}\\b[^"']*["'][^>]*>([\\s\\S]*?)<\\/table>`, "gi"))];
+  return tables.flatMap(([, table]) =>
+    [...table.matchAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi)].map(([, row]) =>
+      [...row.matchAll(/<t[dh]\b[^>]*>([\s\S]*?)<\/t[dh]>/gi)].map(([, cell]) => decodeHtml(cell))));
 }
 
 function getHkuWeighting(html) {
   const rows = hkuTables(html, "table-style-2");
   const result = {};
+  const names = {
+    "Chinese Language": ["Chinese"],
+    "English Language": ["English"],
+    Mathematics: ["Mathematics"],
+    Biology: ["Biology"],
+    Chemistry: ["Chemistry"],
+    Physics: ["Physics"],
+    "Mathematics Extended Part (Module 1 or 2)": ["M1", "M2"],
+    "Information and Communication Technology": ["ICT"],
+    ICT: ["ICT"],
+    "Combined Science": [
+      "Combined Science",
+      "Combined Science: Biology + Chemistry",
+      "Combined Science: Biology + Physics",
+      "Combined Science: Physics + Chemistry",
+    ],
+    "Integrated Science": ["Integrated Science"],
+    "Design and Applied Technology": ["Design and Applied Technology"],
+    "Technology and Living": [
+      "Technology and Living (Fashion, Clothing and Textiles)",
+      "Technology and Living (Food Science and Technology)",
+    ],
+    "Other Subjects": ["__other__"],
+  };
   for (const [factor, subjects] of rows) {
     const parsedFactor = Number(factor.match(/[\d.]+/)?.[0]);
     if (!Number.isFinite(parsedFactor)) continue;
-    const names = {
-      "Chinese Language": "Chinese", "English Language": "English", Mathematics: "Mathematics",
-      Biology: "Biology", Chemistry: "Chemistry", Physics: "Physics",
-      "Mathematics Extended Part (Module 1 or 2)": "M1",
-      "Information and Communication Technology": "ICT", ICT: "ICT",
-    };
-    for (const name of subjects.split(/\s*\/\s*/)) if (names[name]) result[names[name]] = parsedFactor;
-    if (/Module 1 or 2/i.test(subjects)) result.M2 = parsedFactor;
+    for (const rawName of subjects.split(/\s*\/\s*/)) {
+      const name = rawName.trim();
+      for (const mapped of names[name] ?? []) {
+        result[mapped] = parsedFactor;
+      }
+    }
   }
   return result;
 }
@@ -458,18 +489,19 @@ function cuhkWeights(value) {
   const subjectWeights = {};
   const weightedSelections = [];
   if (!value) return { subjectWeights, weightedSelections };
-  for (const part of value.split(",")) {
-    const group = part.match(/^Best\((\d+),\[([^\]]+)\]\):([\d.]+)$/);
-    if (group) {
-      weightedSelections.push({
-        count: Number(group[1]),
-        subjects: group[2].split(",").map((key) => subjectCodes[key]).filter(Boolean),
-        weight: Number(group[3]),
-      });
-      continue;
+  const remainder = value.replace(/Best\((\d+),\[([^\]]+)\]\):([\d.]+)/g, (_, count, list, weight) => {
+    weightedSelections.push({
+      count: Number(count),
+      subjects: list.split(",").map((key) => subjectCodes[key.trim()]).filter(Boolean),
+      weight: Number(weight),
+    });
+    return "";
+  });
+  for (const part of remainder.split(",")) {
+    const direct = part.trim().match(/^([^:]+):([\d.]+)$/);
+    if (direct && subjectCodes[direct[1].trim()]) {
+      subjectWeights[subjectCodes[direct[1].trim()]] = Number(direct[2]);
     }
-    const direct = part.match(/^([^:]+):([\d.]+)$/);
-    if (direct && subjectCodes[direct[1]]) subjectWeights[subjectCodes[direct[1]]] = Number(direct[2]);
   }
   return { subjectWeights, weightedSelections };
 }
@@ -481,12 +513,20 @@ function cuhkRequirements(record) {
     if (key === "ELECT") continue;
     if (coreSubjects[key] && level) requirements.push(`${coreSubjects[key]}最低第 ${level} 級`);
   }
+  const formatElectiveSubjects = (raw) => {
+    if (raw === "*") return "選修科目";
+    const negated = raw.startsWith("!");
+    const cleaned = raw.replace(/^!\[?|\]$/g, "");
+    const mapped = cleaned.split(",").map((code) => subjectCodes[code.trim()] ?? code.trim()).filter(Boolean).join("／");
+    return negated ? `非 ${mapped} 之選修科目` : mapped;
+  };
   for (const elective of record.requirement?.ELECT ?? []) {
-    const subject = elective.subject === "*" ? "選修科目" : subjectCodes[elective.subject] ?? elective.subject;
+    const subject = formatElectiveSubjects(String(elective.subject ?? "*").trim());
     requirements.push(`${subject}最低第 ${elective.score} 級`);
   }
   for (const value of [record.subject_1_text, record.subject_2_text, record.requirement_remarks, record.remarks]) {
-    if (value && value !== "--" && value !== "*" && !requirements.includes(value)) requirements.push(value);
+    const cleaned = value ? decodeHtml(String(value).replace(/<br\s*\/?>/gi, " ")) : "";
+    if (cleaned && cleaned !== "--" && cleaned !== "*" && !requirements.includes(cleaned)) requirements.push(cleaned);
   }
   return requirements;
 }
@@ -886,9 +926,60 @@ async function fetchJson(url) {
   return response.json();
 }
 
-const [hkuResponse, cuhkRecords, polyuHtml] = await Promise.all([
+async function fetchCuhkAdmissionGradesPdf(url) {
+  const response = await fetch(url, { headers: { "user-agent": "JUPAS-Compass-admissions-sync/1.0" }, signal: AbortSignal.timeout(30_000) });
+  if (!response.ok) throw new Error(`Could not fetch official admissions PDF from ${url}: HTTP ${response.status}`);
+  const buffer = new Uint8Array(await response.arrayBuffer());
+  const pdf = await getDocument({ data: buffer, verbosity: 0 }).promise;
+  const statsByCode = new Map();
+  const parseNumeric = (value) => (value && /^(?:\d+(?:\.\d+)?)$/.test(value) ? Number(value) : null);
+
+  for (let pageNumber = 1; pageNumber <= pdf.numPages; pageNumber += 1) {
+    const page = await pdf.getPage(pageNumber);
+    const textContent = await page.getTextContent();
+    const items = textContent.items
+      .map((item) => ({
+        str: item.str.trim(),
+        x: Math.round(item.transform[4] * 10) / 10,
+        y: Math.round(item.transform[5] * 10) / 10,
+      }))
+      .filter((item) => item.str !== "");
+
+    const codes = items
+      .filter((item) => item.x < 50 && /^JS\d{4}$/.test(item.str))
+      .sort((a, b) => b.y - a.y);
+
+    codes.forEach((codeItem, index) => {
+      const upperBound = index === 0 ? Infinity : (codes[index - 1].y + codeItem.y) / 2;
+      const lowerBound = index === codes.length - 1 ? -Infinity : (codeItem.y + codes[index + 1].y) / 2;
+      const band = items.filter((item) => item.y <= upperBound && item.y > lowerBound);
+      const labels = band.filter((item) => item.x > 115 && item.x < 155 && /^(UQ|M|LQ)$/.test(item.str));
+      const scores = band.filter((item) => item.x > 370 && item.x < 425 && /^(?:\d+(?:\.\d+)?|--|N\/A)$/.test(item.str));
+      const row = {};
+      for (const label of labels) {
+        const matchScore = [...scores].sort((a, b) => Math.abs(a.y - label.y) - Math.abs(b.y - label.y))[0];
+        if (matchScore && Math.abs(matchScore.y - label.y) < 5) {
+          row[label.str] = parseNumeric(matchScore.str);
+        }
+      }
+      statsByCode.set(codeItem.str, {
+        upperQuartile: row.UQ ?? null,
+        median: row.M ?? null,
+        lowerQuartile: row.LQ ?? null,
+      });
+    });
+  }
+
+  if (statsByCode.size < 50) {
+    throw new Error(`Unexpectedly small CUHK admission grades PDF parse count (${statsByCode.size}).`);
+  }
+  return statsByCode;
+}
+
+const [hkuResponse, cuhkRecords, cuhkPdfStatistics, polyuHtml] = await Promise.all([
   fetchJson(hkuUrl),
   fetchJson(cuhkDataUrl),
+  fetchCuhkAdmissionGradesPdf(cuhkAdmissionGradesUrl),
   fetchText(polyuCalculatorUrl),
 ]);
 const hkbuRecords = await Promise.all(hkbuProgrammeCodes.map(async (code) => ({
@@ -929,6 +1020,7 @@ for (const record of hkuProgrammes) {
   const formulaText = formulaCell ? decodeHtml(formulaCell) : "";
   const weighting = getHkuWeighting(record.field_hkuad_dse_subject_w ?? "");
   const groups = formulaText ? hkuFormulaModel(formulaText, weighting) : null;
+  const publicWeighting = Object.fromEntries(Object.entries(weighting).filter(([key]) => key !== "__other__"));
   const requirements = [];
   const minimumRows = hkuTables(html, "section-Minimum-Level-Requirement");
   if (minimumRows.length >= 2) {
@@ -954,7 +1046,7 @@ for (const record of hkuProgrammes) {
       categoryCLimit: /category C/i.test(html) ? 1 : 0,
       sourceUrl: hkuGuideUrl,
       formulaDataUrl: hkuUrl,
-      subjectWeights: weighting,
+      subjectWeights: publicWeighting,
     } : null,
     scoreStatistics: stats ? {
       upperQuartile: stats[0],
@@ -986,8 +1078,7 @@ for (const [code, model] of Object.entries(hkustProgrammes)) {
 for (const record of cuhkRecords) {
   const groups = buildCuhkGroups(record.formula);
   const weights = cuhkWeights(record.weight);
-  const statistics = [record.uq, record.m, record.lq].map((value) =>
-    value !== "" && value !== null && value !== undefined && Number.isFinite(Number(value)) ? Number(value) : null);
+  const pdfStats = cuhkPdfStatistics.get(record.code);
   const points = ["JS4501", "JS4502"].includes(record.code)
     ? { "5**": 7, "5*": 6, "5": 5, "4": 4, "3": 3, "2": 2, "1": 1, U: 0 }
     : categoryAGradePoints;
@@ -1016,10 +1107,10 @@ for (const record of cuhkRecords) {
       scoreRemark: record.score_remark || "",
     },
     scoreStatistics: {
-      upperQuartile: statistics[0],
-      median: statistics[1],
-      lowerQuartile: statistics[2],
-      year: 2025,
+      upperQuartile: pdfStats?.upperQuartile ?? null,
+      median: pdfStats?.median ?? null,
+      lowerQuartile: pdfStats?.lowerQuartile ?? null,
+      year: 2026,
       entryYear: 2026,
       sourceUrl: cuhkAdmissionGradesUrl,
     },
@@ -1094,7 +1185,7 @@ for (const code of hkmuProgrammeCodes) {
 }
 
 const result = {
-  sourceSnapshot: "2026-11-06",
+  sourceSnapshot: new Date().toISOString().slice(0, 10),
   sources: [
     { institutionId: "hku", label: "HKU 2027 admissions formulae and 2026 score quartiles", url: hkuGuideUrl, dataUrl: hkuUrl },
     { institutionId: "hkbu", label: "HKBU 2027 programme requirements, score conversion and weights", url: "https://admissions.hkbu.edu.hk/content/dam/ao-assets/document/news/JUPAS_GER_PER.pdf", calculatorUrl: "https://admissions.hkbu.edu.hk/admissions/hkdse.html" },
@@ -1103,7 +1194,7 @@ const result = {
     { institutionId: "hkust", label: "HKUST 2027 score formulae and conversion", url: hkustFormulaUrl, conversionUrl: hkustConversionUrl },
     { institutionId: "hkust", label: "HKUST 2026 JUPAS admissions scores", url: hkustStatisticsUrl },
     { institutionId: "cuhk", label: "CUHK official 2026-entry score calculator", url: cuhkCalculatorUrl, dataUrl: cuhkDataUrl },
-    { institutionId: "cuhk", label: "CUHK 2026-entry admission grades (2025 admissions)", url: cuhkAdmissionGradesUrl },
+    { institutionId: "cuhk", label: "CUHK 2026 admission grades (2026 entry)", url: cuhkAdmissionGradesUrl },
     { institutionId: "cityuhk", label: "CityU JUPAS admissions information", url: cityuAdmissionsUrl },
     { institutionId: "lingnanu", label: "Lingnan JUPAS admission requirements and 2027-entry score conversion and weighting tables", url: lingnanFormulaUrl },
     { institutionId: "hkmu", label: "HKMU JUPAS score calculator and programme requirements", url: hkmuCalculatorUrl, scriptUrl: hkmuCalculatorScriptUrl },
@@ -1140,7 +1231,7 @@ const result = {
     cuhk: [
       "CUHK's official calculator currently covers 2026 entry only. The university says its 2027-entry calculator will be released between March and April 2027.",
       "The calculator excludes Category C, Category B, alternative Chinese qualifications, extra-subject bonus and repeat-sitting penalties.",
-      "Formulae and expected scores are historical 2026-entry references; quartiles are 2025 admission results.",
+      "Formulae and expected scores are historical 2026-entry references; quartiles are 2026 admission results parsed from CUHK's official Admission Grades PDF.",
     ],
     lingnanu: [
       "嶺大官方 PDF 檔名含 26-27，但內文的計分及科目權重章節明確標示 2027 Entry，故此處以 2027/28 入學週期整理。",

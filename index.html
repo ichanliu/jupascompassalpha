@@ -154,6 +154,48 @@
           </div>
           <div class="selected-programme" id="selected-programme" aria-live="polite">輸入 JS 編號以查找課程。</div>
 
+          <div class="profile-panel" id="profile-panel">
+            <div class="profile-header">
+              <div class="profile-title-wrap">
+                <span class="field-label">成績檔案 Profile</span>
+                <span class="profile-status" id="profile-status" aria-live="polite">本機自動儲存</span>
+              </div>
+              <div class="profile-actions">
+                <button class="text-button" type="button" id="profile-add-btn">+ 新增</button>
+                <button class="text-button" type="button" id="profile-rename-btn">改名</button>
+                <button class="text-button text-button-danger" type="button" id="profile-delete-btn">刪除</button>
+              </div>
+            </div>
+            <div class="profile-select-row">
+              <select id="profile-select" aria-label="選擇成績檔案"></select>
+              <span class="profile-count-badge" id="profile-subject-count">0 科</span>
+            </div>
+            <form class="profile-editor" id="profile-editor" hidden>
+              <input
+                id="profile-name-input"
+                type="text"
+                maxlength="24"
+                placeholder="輸入檔案名稱（如 Mock 成績）"
+                autocomplete="off"
+              />
+              <label class="profile-copy-check" id="profile-copy-wrap">
+                <input type="checkbox" id="profile-copy-grades" checked />
+                <span>複製目前成績</span>
+              </label>
+              <div class="profile-editor-actions">
+                <button class="profile-save-btn" type="submit" id="profile-editor-save">儲存</button>
+                <button class="profile-cancel-btn" type="button" id="profile-editor-cancel">取消</button>
+              </div>
+            </form>
+            <div class="profile-confirm" id="profile-confirm" hidden>
+              <span id="profile-confirm-text">確定刪除此成績檔案？</span>
+              <div class="profile-editor-actions">
+                <button class="profile-danger-btn" type="button" id="profile-confirm-yes">確定刪除</button>
+                <button class="profile-cancel-btn" type="button" id="profile-confirm-no">取消</button>
+              </div>
+            </div>
+          </div>
+
           <div class="grade-heading">
             <span class="field-label">你的 DSE 成績</span>
             <button class="text-button" type="button" id="clear-grades">清除</button>
@@ -204,7 +246,7 @@
             </article>
             <article>
               <h3>成績與私隱</h3>
-              <p>計分在你的瀏覽器內完成，輸入的成績不會上傳或保存。網站只會在瀏覽器記住你選擇的色彩主題；載入課程目錄時會讀取公開資料檔案。</p>
+              <p>計分與成績檔案均只儲存在你的本機瀏覽器內，輸入的成績不會上傳至任何伺服器。你可以隨時切換、清除或刪除已儲存的檔案與色彩主題設定。</p>
             </article>
           </div>
           <div class="data-note-footer">

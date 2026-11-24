@@ -3,7 +3,7 @@
   "entryYear": "2027/28",
   "source": "JUPAS official programme catalogues",
   "sourceUrl": "https://www.jupas.edu.hk/en/programmes-offered/",
-  "catalogueUpdated": "2026-11-07",
+  "catalogueUpdated": "2026-11-24",
   "institutions": [
     {
       "id": "cityuhk",
@@ -152,7 +152,7 @@
       "admissionNotes": [
         "CUHK's official calculator currently covers 2026 entry only. The university says its 2027-entry calculator will be released between March and April 2027.",
         "The calculator excludes Category C, Category B, alternative Chinese qualifications, extra-subject bonus and repeat-sitting penalties.",
-        "Formulae and expected scores are historical 2026-entry references; quartiles are 2025 admission results."
+        "Formulae and expected scores are historical 2026-entry references; quartiles are 2026 admission results parsed from CUHK's official Admission Grades PDF."
       ]
     },
     {
@@ -10104,10 +10104,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 24.5,
-        "median": 24,
-        "lowerQuartile": 23,
-        "year": 2025,
+        "upperQuartile": 26,
+        "median": 25,
+        "lowerQuartile": 24.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -10182,7 +10182,7 @@
         "upperQuartile": 31.9,
         "median": 30.4,
         "lowerQuartile": 29.2,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -10254,10 +10254,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 28.5,
-        "median": 27.25,
-        "lowerQuartile": 26.5,
-        "year": 2025,
+        "upperQuartile": 28.75,
+        "median": 28,
+        "lowerQuartile": 27.75,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -10331,7 +10331,7 @@
         "upperQuartile": 27.5,
         "median": 26,
         "lowerQuartile": 24.5,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -10402,10 +10402,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 28,
-        "median": 26.5,
-        "lowerQuartile": 26,
-        "year": 2025,
+        "upperQuartile": 29,
+        "median": 27.5,
+        "lowerQuartile": 26.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -10477,8 +10477,8 @@
       "scoreStatistics": {
         "upperQuartile": 26,
         "median": 24.5,
-        "lowerQuartile": 23,
-        "year": 2025,
+        "lowerQuartile": 23.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -10550,10 +10550,10 @@
         "scoreRemark": "The 2025 admission scores displayed here are calculated based on students admitted to the programme for the 2025 entry, using the revised 2026 programme scoring formula."
       },
       "scoreStatistics": {
-        "upperQuartile": 26.13,
-        "median": 25.3,
-        "lowerQuartile": 24.9,
-        "year": 2025,
+        "upperQuartile": 27.1,
+        "median": 25.9,
+        "lowerQuartile": 25.6,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -10623,10 +10623,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 27.5,
+        "upperQuartile": 26,
         "median": 24.5,
-        "lowerQuartile": 22.5,
-        "year": 2025,
+        "lowerQuartile": 21.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -10637,7 +10637,7 @@
         "選修科目最低第 3 級",
         "選修科目最低第 3 級",
         "Music is preferred",
-        "<ol><li>JUPAS applicants are strongly advised to state their academic interest and musical experience in the \"Additional Information\" of their JUPAS application.</li><li>As a reference, students should have attained a level of proficiency in their main instrument / voice at or above ABRSM / Trinity College London Grade 8 (or equivalent).</li><li>Audition video and written entrance test will be required.</li><li>Students should include, if possible the following supporting documents: (a) letters of recommendation from music teachers / music professionals; (b) results and certificates of graded music examinations; (c) list of repertoire studied in the last 2 years; (d) composition portfolio (if available).</li></ol>"
+        "JUPAS applicants are strongly advised to state their academic interest and musical experience in the \"Additional Information\" of their JUPAS application. As a reference, students should have attained a level of proficiency in their main instrument / voice at or above ABRSM / Trinity College London Grade 8 (or equivalent). Audition video and written entrance test will be required. Students should include, if possible the following supporting documents: (a) letters of recommendation from music teachers / music professionals; (b) results and certificates of graded music examinations; (c) list of repertoire studied in the last 2 years; (d) composition portfolio (if available)."
       ]
     },
     {
@@ -10712,10 +10712,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 25,
+        "upperQuartile": 26,
         "median": 24.5,
         "lowerQuartile": 23,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -10788,10 +10788,10 @@
         "scoreRemark": "The 2025 admission scores displayed here are calculated based on students admitted to the programme for the 2025 entry, using the revised 2026 programme scoring formula."
       },
       "scoreStatistics": {
-        "upperQuartile": 30,
-        "median": 27.75,
-        "lowerQuartile": 27,
-        "year": 2025,
+        "upperQuartile": 30.5,
+        "median": 30,
+        "lowerQuartile": 29.25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -10863,10 +10863,10 @@
         "scoreRemark": "The 2025 admission scores displayed here are calculated based on students admitted to the programme for the 2025 entry, using the revised 2026 programme scoring formula."
       },
       "scoreStatistics": {
-        "upperQuartile": 23.06,
-        "median": 22.5,
-        "lowerQuartile": 21.69,
-        "year": 2025,
+        "upperQuartile": 24.75,
+        "median": 24.5,
+        "lowerQuartile": 24,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -10939,7 +10939,7 @@
         "upperQuartile": null,
         "median": null,
         "lowerQuartile": null,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11009,10 +11009,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 26,
-        "median": 23,
+        "upperQuartile": 24.5,
+        "median": 23.5,
         "lowerQuartile": 23,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11084,10 +11084,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 24.75,
-        "median": 24.25,
-        "lowerQuartile": 24.25,
-        "year": 2025,
+        "upperQuartile": 26,
+        "median": 25.75,
+        "lowerQuartile": 25.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11157,10 +11157,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 27.5,
-        "median": 26,
-        "lowerQuartile": 26,
-        "year": 2025,
+        "upperQuartile": 29,
+        "median": 27.5,
+        "lowerQuartile": 27.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11230,10 +11230,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 41,
+        "upperQuartile": 39.5,
         "median": 38,
         "lowerQuartile": 36.5,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11303,10 +11303,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 24.5,
-        "median": 23.5,
-        "lowerQuartile": 23,
-        "year": 2025,
+        "upperQuartile": 26,
+        "median": 26,
+        "lowerQuartile": 24.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11355,7 +11355,26 @@
           "English": 1.25,
           "Mathematics": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 1.5
+          },
+          {
+            "count": 1,
+            "subjects": [
+              "Chemistry",
+              "Physics",
+              "Economics",
+              "ICT"
+            ],
+            "weight": 1.25
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -11379,10 +11398,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 42.5,
-        "median": 41.75,
-        "lowerQuartile": 40.25,
-        "year": 2025,
+        "upperQuartile": 43.75,
+        "median": 42.5,
+        "lowerQuartile": 41.125,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11453,10 +11472,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 27.5,
-        "median": 26,
+        "upperQuartile": 29,
+        "median": 27.5,
         "lowerQuartile": 26,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11505,7 +11524,19 @@
           "English": 2,
           "Mathematics": 2
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2",
+              "Chemistry",
+              "Physics",
+              "Economics"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -11530,9 +11561,9 @@
       },
       "scoreStatistics": {
         "upperQuartile": 54.75,
-        "median": 52.5,
-        "lowerQuartile": 51.75,
-        "year": 2025,
+        "median": 53.25,
+        "lowerQuartile": 52.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11610,9 +11641,9 @@
       },
       "scoreStatistics": {
         "upperQuartile": 35,
-        "median": 35,
+        "median": 33.5,
         "lowerQuartile": 33.5,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11705,10 +11736,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 37.5,
+        "upperQuartile": 39,
         "median": 37.5,
         "lowerQuartile": 36,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11757,7 +11788,19 @@
           "English": 2,
           "Mathematics": 2
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2",
+              "Chemistry",
+              "Physics",
+              "Economics"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -11781,10 +11824,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 63.75,
+        "upperQuartile": 59.25,
         "median": 57.75,
-        "lowerQuartile": 54.75,
-        "year": 2025,
+        "lowerQuartile": 56.25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11854,10 +11897,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 27.5,
+        "upperQuartile": 29,
         "median": 26,
-        "lowerQuartile": 24.5,
-        "year": 2025,
+        "lowerQuartile": 25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -11930,8 +11973,8 @@
       "scoreStatistics": {
         "upperQuartile": 29,
         "median": 27.5,
-        "lowerQuartile": 26,
-        "year": 2025,
+        "lowerQuartile": 27.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12010,10 +12053,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 45,
+        "upperQuartile": 43.5,
         "median": 42,
-        "lowerQuartile": 40.5,
-        "year": 2025,
+        "lowerQuartile": 39,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12092,10 +12135,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 40.5,
-        "median": 39,
-        "lowerQuartile": 37.5,
-        "year": 2025,
+        "upperQuartile": 42,
+        "median": 42,
+        "lowerQuartile": 39,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12158,7 +12201,33 @@
         "subjectWeights": {
           "Mathematics": 2
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 2
+          },
+          {
+            "count": 1,
+            "subjects": [
+              "Chinese",
+              "English"
+            ],
+            "weight": 1.5
+          },
+          {
+            "count": 1,
+            "subjects": [
+              "Physics",
+              "Economics",
+              "ICT"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -12183,9 +12252,9 @@
       },
       "scoreStatistics": {
         "upperQuartile": 57.5,
-        "median": 53.75,
-        "lowerQuartile": 53,
-        "year": 2025,
+        "median": 57.5,
+        "lowerQuartile": 54.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12194,7 +12263,7 @@
         "英文最低第 3 級",
         "數學最低第 4 級",
         "選修科目最低第 3 級",
-        "AMTH1,AMTH2最低第 3 級",
+        "M1／M2最低第 3 級",
         "Mathematics (Module 1 or 2)"
       ]
     },
@@ -12256,10 +12325,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 23,
-        "median": 22,
-        "lowerQuartile": 21.5,
-        "year": 2025,
+        "upperQuartile": 24.5,
+        "median": 23.5,
+        "lowerQuartile": 22,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12316,7 +12385,16 @@
           "Geography": 1.5,
           "Technology and Living (Food Science and Technology)": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -12340,10 +12418,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 31.75,
-        "median": 30.5,
-        "lowerQuartile": 30.25,
-        "year": 2025,
+        "upperQuartile": 36.25,
+        "median": 34,
+        "lowerQuartile": 33.25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12353,7 +12431,7 @@
         "數學最低第 3 級",
         "選修科目最低第 3 級",
         "選修科目最低第 3 級",
-        "The following subjects are preferred:<br />\nMathematics (Module 1 or 2), Biology, Business, Accounting and Financial Studies, Chemistry, Design and Applied Technology, Economics, Geography, Information and Communication Technology, Physics, Technology and Living (Food Science and Technology)"
+        "The following subjects are preferred: Mathematics (Module 1 or 2), Biology, Business, Accounting and Financial Studies, Chemistry, Design and Applied Technology, Economics, Geography, Information and Communication Technology, Physics, Technology and Living (Food Science and Technology)"
       ]
     },
     {
@@ -12397,7 +12475,16 @@
           "Design and Applied Technology": 1.25,
           "ICT": 1.25
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -12421,10 +12508,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 33.75,
-        "median": 31.5,
-        "lowerQuartile": 30.5,
-        "year": 2025,
+        "upperQuartile": 37.25,
+        "median": 36.625,
+        "lowerQuartile": 35.75,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12432,7 +12519,7 @@
         "中文最低第 3 級",
         "英文最低第 3 級",
         "數學最低第 3 級",
-        "AMTH1,AMTH2,ABIOL,ACHEM,APHYS,ADATE,AINCT最低第 3 級",
+        "M1／M2／Biology／Chemistry／Physics／Design and Applied Technology／ICT最低第 3 級",
         "選修科目最低第 3 級",
         "Mathematics (Module 1 or 2), Biology, Chemistry, Design and Applied Technology, Information and Communication Technology, Physics"
       ]
@@ -12478,7 +12565,16 @@
           "Design and Applied Technology": 1.5,
           "ICT": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 1.75
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -12502,10 +12598,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 44.5,
-        "median": 42.875,
-        "lowerQuartile": 40.375,
-        "year": 2025,
+        "upperQuartile": 45.875,
+        "median": 43.25,
+        "lowerQuartile": 42.25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12513,10 +12609,10 @@
         "中文最低第 3 級",
         "英文最低第 3 級",
         "數學最低第 4 級",
-        "AMTH1,AMTH2,ABIOL,ACHEM,APHYS,AINCT最低第 3 級",
+        "M1／M2／Biology／Chemistry／Physics／ICT最低第 3 級",
         "選修科目最低第 3 級",
         "Mathematics (Module 1 or 2), Biology, Chemistry, Information and Communication Technology, Physics",
-        "The following subjects are preferred:<br />\nMathematics (Module 1 or 2), Biology, Chemistry, Design and Applied Technology, Information and Communication Technology, Physics"
+        "The following subjects are preferred: Mathematics (Module 1 or 2), Biology, Chemistry, Design and Applied Technology, Information and Communication Technology, Physics"
       ]
     },
     {
@@ -12560,7 +12656,16 @@
           "Economics": 1.5,
           "ICT": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 2
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -12585,9 +12690,9 @@
       },
       "scoreStatistics": {
         "upperQuartile": 59,
-        "median": 54.5,
-        "lowerQuartile": 53,
-        "year": 2025,
+        "median": 57.5,
+        "lowerQuartile": 55.25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12597,7 +12702,7 @@
         "數學最低第 4 級",
         "選修科目最低第 3 級",
         "選修科目最低第 3 級",
-        "The following subjects are preferred:<br />\nMathematics (Module 1 or 2), Biology, Chemistry, Economics, Information and Communication Technology, Physics"
+        "The following subjects are preferred: Mathematics (Module 1 or 2), Biology, Chemistry, Economics, Information and Communication Technology, Physics"
       ]
     },
     {
@@ -12644,7 +12749,16 @@
           "Economics": 1.5,
           "ICT": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 1.75
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -12668,10 +12782,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 48.75,
-        "median": 47.375,
-        "lowerQuartile": 45.625,
-        "year": 2025,
+        "upperQuartile": 52.5,
+        "median": 49.75,
+        "lowerQuartile": 49,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12681,7 +12795,7 @@
         "數學最低第 4 級",
         "選修科目最低第 3 級",
         "選修科目最低第 3 級",
-        "The following subjects are preferred:<br />\nMathematics (Module 1 or 2), Biology, Business, Accounting and Financial Studies, Chemistry, Economics, Information and Communication Technology, Physics"
+        "The following subjects are preferred: Mathematics (Module 1 or 2), Biology, Business, Accounting and Financial Studies, Chemistry, Economics, Information and Communication Technology, Physics"
       ]
     },
     {
@@ -12721,7 +12835,16 @@
           "Mathematics": 1.5,
           "Physics": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -12745,10 +12868,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 32.75,
-        "median": 31.25,
-        "lowerQuartile": 30.5,
-        "year": 2025,
+        "upperQuartile": 35.75,
+        "median": 34.25,
+        "lowerQuartile": 34,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12756,7 +12879,7 @@
         "中文最低第 3 級",
         "英文最低第 3 級",
         "數學最低第 3 級",
-        "AMTH1, AMTH2, ABIOL, ACHEM, APHYS, AINCT最低第 3 級",
+        "M1／M2／Biology／Chemistry／Physics／ICT最低第 3 級",
         "選修科目最低第 3 級",
         "Mathematics (Module 1 or 2), Biology, Chemistry, Information and Communication Technology, Physics"
       ]
@@ -12802,7 +12925,16 @@
           "Design and Applied Technology": 1.5,
           "ICT": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 1.75
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -12826,10 +12958,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 40.375,
-        "median": 39.25,
-        "lowerQuartile": 38.125,
-        "year": 2025,
+        "upperQuartile": 44.25,
+        "median": 43,
+        "lowerQuartile": 41.875,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12837,10 +12969,10 @@
         "中文最低第 3 級",
         "英文最低第 3 級",
         "數學最低第 4 級",
-        "AMTH1,AMTH2,ABIOL,ACHEM,APHYS最低第 3 級",
+        "M1／M2／Biology／Chemistry／Physics最低第 3 級",
         "選修科目最低第 3 級",
         "Mathematics (Module 1 or 2), Biology, Chemistry, Physics",
-        "The following subjects are preferred:<br />\nMathematics (Module 1 or 2), Biology, Chemistry, Design and Applied Technology, Information and Communication Technology, Physics"
+        "The following subjects are preferred: Mathematics (Module 1 or 2), Biology, Chemistry, Design and Applied Technology, Information and Communication Technology, Physics"
       ]
     },
     {
@@ -12885,7 +13017,16 @@
           "Economics": 1.5,
           "ICT": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -12909,10 +13050,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 34,
-        "median": 32.5,
-        "lowerQuartile": 32.5,
-        "year": 2025,
+        "upperQuartile": 37,
+        "median": 36.25,
+        "lowerQuartile": 35,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12922,7 +13063,7 @@
         "數學最低第 3 級",
         "選修科目最低第 3 級",
         "選修科目最低第 3 級",
-        "The following subjects are preferred:<br />\nMathematics (Module 1 or 2), Biology, Business, Accounting and Financial Studies, Chemistry, Economics, Information and Communication Technology, Physics"
+        "The following subjects are preferred: Mathematics (Module 1 or 2), Biology, Business, Accounting and Financial Studies, Chemistry, Economics, Information and Communication Technology, Physics"
       ]
     },
     {
@@ -12964,7 +13105,17 @@
           "Chemistry": 1.5,
           "Physics": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "Mathematics",
+              "M1",
+              "M2"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -12988,10 +13139,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 44.5,
-        "median": 42.25,
-        "lowerQuartile": 41.25,
-        "year": 2025,
+        "upperQuartile": 45.75,
+        "median": 43.5,
+        "lowerQuartile": 42.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -12999,7 +13150,7 @@
         "中文最低第 3 級",
         "英文最低第 3 級",
         "數學最低第 3 級",
-        "AMTH1,AMTH2,ABIOL,ACHEM,APHYS最低第 3 級",
+        "M1／M2／Biology／Chemistry／Physics最低第 3 級",
         "選修科目最低第 3 級",
         "Mathematics (Module 1 or 2), Biology, Chemistry, Physics"
       ]
@@ -13047,7 +13198,16 @@
           "Economics": 1.2,
           "Geography": 1.2
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -13071,10 +13231,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 32.5,
-        "median": 31.75,
-        "lowerQuartile": 31,
-        "year": 2025,
+        "upperQuartile": 38.5,
+        "median": 35.5,
+        "lowerQuartile": 34.75,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -13082,7 +13242,7 @@
         "中文最低第 3 級",
         "英文最低第 3 級",
         "數學最低第 3 級",
-        "AMTH1,AMTH2,ABIOL,ACHEM,APHYS,ADATE,AINCT最低第 3 級",
+        "M1／M2／Biology／Chemistry／Physics／Design and Applied Technology／ICT最低第 3 級",
         "選修科目最低第 3 級",
         "Mathematics (Module 1 or 2), Biology, Chemistry, Design and Applied Technology, Information and Communication Technology, Physics"
       ]
@@ -13129,7 +13289,16 @@
           "Physics": 1.5,
           "ICT": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 1.75
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -13153,10 +13322,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 55.75,
-        "median": 52.375,
-        "lowerQuartile": 50.375,
-        "year": 2025,
+        "upperQuartile": 56.75,
+        "median": 53.125,
+        "lowerQuartile": 52,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -13166,7 +13335,7 @@
         "數學最低第 5^ 級",
         "選修科目最低第 3 級",
         "選修科目最低第 3 級",
-        "^Candidates with Level 4 in Mathematics (Compulsory Part) and good results in other HKDSE subjects will be exceptionally considered on a case by case basis.<br />\nThe following subjects are preferred:<br />\nMathematics (Module 1 or 2), Biology, Chemistry, Information and Communication Technology, Physics"
+        "^Candidates with Level 4 in Mathematics (Compulsory Part) and good results in other HKDSE subjects will be exceptionally considered on a case by case basis. The following subjects are preferred: Mathematics (Module 1 or 2), Biology, Chemistry, Information and Communication Technology, Physics"
       ]
     },
     {
@@ -13207,7 +13376,16 @@
           "Physics": 1.25,
           "Chemistry": 1.25
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 1.25
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -13231,10 +13409,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 26.875,
-        "median": 26.375,
-        "lowerQuartile": 24.625,
-        "year": 2025,
+        "upperQuartile": 29.875,
+        "median": 29.125,
+        "lowerQuartile": 28.625,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -13242,10 +13420,10 @@
         "中文最低第 3 級",
         "英文最低第 3 級",
         "數學最低第 3 級",
-        "AMTH1,AMTH2,ABIOL,ACHEM,APHYS,AINCT最低第 3 級",
+        "M1／M2／Biology／Chemistry／Physics／ICT最低第 3 級",
         "選修科目最低第 3 級",
         "Mathematics (Module 1 or 2), Biology, Chemistry, Information and Communication Technology, Physics",
-        "The following subjects are preferred:<br />\nMathematics (Module 1 or 2), Biology, Chemistry, Information and Communication Technology, Physics"
+        "The following subjects are preferred: Mathematics (Module 1 or 2), Biology, Chemistry, Information and Communication Technology, Physics"
       ]
     },
     {
@@ -13352,7 +13530,7 @@
         "upperQuartile": 38,
         "median": 37,
         "lowerQuartile": 36,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -13360,11 +13538,11 @@
         "中文最低第 3 級",
         "英文最低第 4 級",
         "數學最低第 3 級",
-        "ABIOL,ACHEM最低第 3 級",
+        "Biology／Chemistry最低第 3 級",
         "選修科目最低第 3 級",
         "Biology or Chemistry",
         "Mathematics (Module 1 or 2) is NOT considered as an Elective Subject",
-        "(a) Taking both Biology and Chemistry is preferred<br />\n(b) Taking a third elective and/or Mathematics (Module 1 or 2) will be strongly recommended",
+        "(a) Taking both Biology and Chemistry is preferred (b) Taking a third elective and/or Mathematics (Module 1 or 2) will be strongly recommended",
         "Note: Mathematics (Module 1 or 2) is NOT considered as an Elective Subject in the admission score calculation"
       ]
     },
@@ -13455,10 +13633,10 @@
         "scoreRemark": "Note for Expected Score: this is the minimum requirement of the programme."
       },
       "scoreStatistics": {
-        "upperQuartile": 41.5,
-        "median": 40.5,
+        "upperQuartile": 42,
+        "median": 41,
         "lowerQuartile": 40,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -13466,11 +13644,11 @@
         "中文最低第 3 級",
         "英文最低第 4 級",
         "數學最低第 3 級",
-        "ABIOL,ACHEM最低第 3 級",
+        "Biology／Chemistry最低第 3 級",
         "選修科目最低第 3 級",
         "Biology or Chemistry",
         "Mathematics (Module 1 or 2) is NOT considered as an Elective Subject",
-        "(a) Taking both Biology and Chemistry is preferred<br />\n(b) Taking a third elective and/or Mathematics (Module 1 or 2) will be strongly recommended<br />\n(c) Additional requirement: Total score >= 40 in 6 graded subjects with 5** in ANY 4 subjects",
+        "(a) Taking both Biology and Chemistry is preferred (b) Taking a third elective and/or Mathematics (Module 1 or 2) will be strongly recommended (c) Additional requirement: Total score >= 40 in 6 graded subjects with 5** in ANY 4 subjects",
         "Note: Mathematics (Module 1 or 2) is NOT considered as an Elective Subject in the admission score calculation"
       ]
     },
@@ -13508,7 +13686,17 @@
           "U": 0
         },
         "subjectWeights": {},
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "Biology",
+              "Chemistry",
+              "Physics"
+            ],
+            "weight": 1.2
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -13532,10 +13720,10 @@
         "scoreRemark": "Note for Expected Score: with reference to the minimum score of students admitted to this programme in previous year."
       },
       "scoreStatistics": {
-        "upperQuartile": 30.1,
-        "median": 28.6,
-        "lowerQuartile": 28.3,
-        "year": 2025,
+        "upperQuartile": 30.4,
+        "median": 28.9,
+        "lowerQuartile": 27.6,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -13545,7 +13733,7 @@
         "數學最低第 2 級",
         "選修科目最低第 3 級",
         "選修科目最低第 3 級",
-        "The following subjects are preferred:<br />\nBiology, Chemistry, Physics"
+        "The following subjects are preferred: Biology, Chemistry, Physics"
       ]
     },
     {
@@ -13606,10 +13794,10 @@
         "scoreRemark": "The 2025 admission scores displayed here are calculated based on students admitted to the programme for the 2025 entry, using the revised 2026 programme scoring formula."
       },
       "scoreStatistics": {
-        "upperQuartile": 33.5,
-        "median": 32,
-        "lowerQuartile": 30.5,
-        "year": 2025,
+        "upperQuartile": 35,
+        "median": 33.5,
+        "lowerQuartile": 33.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -13659,7 +13847,18 @@
           "English": 1.5,
           "Mathematics": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "Biology",
+              "Chemistry",
+              "Economics",
+              "Health Management and Social Care"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -13683,10 +13882,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 36.5,
-        "median": 32.75,
-        "lowerQuartile": 32.5,
-        "year": 2025,
+        "upperQuartile": 35.75,
+        "median": 34.25,
+        "lowerQuartile": 34.25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -13756,10 +13955,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 30.5,
-        "median": 30.5,
-        "lowerQuartile": 29,
-        "year": 2025,
+        "upperQuartile": 32,
+        "median": 32,
+        "lowerQuartile": 32,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -13769,7 +13968,7 @@
         "數學最低第 2 級",
         "選修科目最低第 3 級",
         "選修科目最低第 3 級",
-        "Preferred subjects for one of the two electives:<br />\nBiology, Chemistry, Physics"
+        "Preferred subjects for one of the two electives: Biology, Chemistry, Physics"
       ]
     },
     {
@@ -13863,10 +14062,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 42.5,
-        "median": 41,
-        "lowerQuartile": 39.5,
-        "year": 2025,
+        "upperQuartile": 43.25,
+        "median": 42.5,
+        "lowerQuartile": 41,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -13874,7 +14073,7 @@
         "中文最低第 3 級",
         "英文最低第 3 級",
         "數學最低第 3 級",
-        "ABIOL,ACHEM最低第 3 級",
+        "Biology／Chemistry最低第 3 級",
         "選修科目最低第 3 級",
         "Biology or Chemistry",
         "Category A subjects only"
@@ -13922,7 +14121,24 @@
           "ICT": 1.5,
           "Technology and Living (Food Science and Technology)": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "English",
+              "Mathematics"
+            ],
+            "weight": 1.5
+          },
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 2
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -13946,10 +14162,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 40.5,
-        "median": 37.75,
-        "lowerQuartile": 36,
-        "year": 2025,
+        "upperQuartile": 43.75,
+        "median": 41.5,
+        "lowerQuartile": 39.75,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -13957,11 +14173,11 @@
         "中文最低第 3 級",
         "英文最低第 3 級",
         "數學最低第 2 級",
-        "AMTH1,AMTH2,ABIOL,ACHEM,APHYS最低第 3 級",
+        "M1／M2／Biology／Chemistry／Physics最低第 3 級",
         "選修科目最低第 3 級",
         "Mathematics (Module 1 or 2), Biology, Chemistry, Physics",
         "Category A subjects only",
-        "The following subjects are preferred:<br />\nMathematics (Module 1 or 2), Biology, Chemistry, Physics"
+        "The following subjects are preferred: Mathematics (Module 1 or 2), Biology, Chemistry, Physics"
       ]
     },
     {
@@ -14005,7 +14221,16 @@
           "Physics": 2,
           "Geography": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 2
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -14029,10 +14254,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 52,
-        "median": 47,
-        "lowerQuartile": 45,
-        "year": 2025,
+        "upperQuartile": 53.75,
+        "median": 49.25,
+        "lowerQuartile": 47,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -14040,7 +14265,7 @@
         "中文最低第 3 級",
         "英文最低第 3 級",
         "數學最低第 3 級",
-        "AMTH1,AMTH2,ABIOL,ACHEM,APHYS,AGEOG最低第 4 級",
+        "M1／M2／Biology／Chemistry／Physics／Geography最低第 4 級",
         "選修科目最低第 3 級",
         "Mathematics (Module 1 or 2), Biology, Chemistry, Geography, Physics"
       ]
@@ -14079,7 +14304,16 @@
           "U": 0
         },
         "subjectWeights": {},
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 3.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -14103,10 +14337,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 57.75,
-        "median": 52.5,
-        "lowerQuartile": 51.75,
-        "year": 2025,
+        "upperQuartile": 60.75,
+        "median": 57.75,
+        "lowerQuartile": 56.25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -14114,8 +14348,8 @@
         "中文最低第 3 級",
         "英文最低第 3 級",
         "數學最低第 4 級",
-        "ABIOL,ACHEM,APHYS,AECON,AGEOG,AINCT,ATLFS最低第 3 級",
-        "AMTH1,AMTH2最低第 4 級",
+        "Biology／Chemistry／Physics／Economics／Geography／ICT／Technology and Living (Food Science and Technology)最低第 3 級",
+        "M1／M2最低第 4 級",
         "Biology, Chemistry, Economics, Geography, Information and Communication Technology, Physics, Technology and Living (Food Science and Technology)",
         "Mathematics (Module 1 or 2)"
       ]
@@ -14157,7 +14391,16 @@
           "Mathematics": 1.5,
           "Physics": 2
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -14181,10 +14424,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 52.75,
+        "upperQuartile": 52,
         "median": 46.75,
-        "lowerQuartile": 43,
-        "year": 2025,
+        "lowerQuartile": 45.25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -14193,7 +14436,7 @@
         "英文最低第 3 級",
         "數學最低第 4 級",
         "Physics最低第 4 級",
-        "AMTH1,AMTH2,ABIOL,ACHEM,AECON,AGEOG,AINCT,ATLFS最低第 3 級",
+        "M1／M2／Biology／Chemistry／Economics／Geography／ICT／Technology and Living (Food Science and Technology)最低第 3 級",
         "Physics",
         "Mathematics (Module 1 or 2), Biology, Chemistry, Economics, Geography, Information and Communication Technology, Technology and Living (Food Science and Technology)",
         "Mathematics (Module 1 or 2) is preferred"
@@ -14235,7 +14478,16 @@
         "subjectWeights": {
           "Mathematics": 2
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 2
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -14259,10 +14511,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 44.5,
-        "median": 43,
-        "lowerQuartile": 41.5,
-        "year": 2025,
+        "upperQuartile": 47.5,
+        "median": 46,
+        "lowerQuartile": 44.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -14271,7 +14523,7 @@
         "英文最低第 3 級",
         "數學最低第 3 級",
         "選修科目最低第 3 級",
-        "AMTH1,AMTH2最低第 3 級",
+        "M1／M2最低第 3 級",
         "Category A subjects only",
         "Mathematics (Module 1 or 2)"
       ]
@@ -14318,7 +14570,17 @@
           "U": 0
         },
         "subjectWeights": {},
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 2,
+            "subjects": [
+              "English",
+              "Biology",
+              "Chemistry"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -14342,10 +14604,10 @@
         "scoreRemark": "The 2025 admission scores displayed here are calculated based on students admitted to the programme for the 2025 entry, using the revised 2026 programme scoring formula."
       },
       "scoreStatistics": {
-        "upperQuartile": 33.75,
-        "median": 33,
-        "lowerQuartile": 32.44,
-        "year": 2025,
+        "upperQuartile": 35.25,
+        "median": 35.25,
+        "lowerQuartile": 35,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -14353,7 +14615,7 @@
         "中文最低第 3 級",
         "英文最低第 3 級",
         "數學最低第 3 級",
-        "ABIOL,ACHEM最低第 3 級",
+        "Biology／Chemistry最低第 3 級",
         "選修科目最低第 3 級",
         "Biology or Chemistry"
       ]
@@ -14398,7 +14660,16 @@
           "Physics": 1.5,
           "ICT": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 2
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -14422,10 +14693,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 65,
-        "median": 63.5,
-        "lowerQuartile": 52,
-        "year": 2025,
+        "upperQuartile": 65.5,
+        "median": 60.5,
+        "lowerQuartile": 59.75,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -14434,9 +14705,9 @@
         "英文最低第 4 級",
         "數學最低第 5 級",
         "選修科目最低第 4 級",
-        "AMTH1,AMTH2最低第 5 級",
+        "M1／M2最低第 5 級",
         "Mathematics (Module 1 or 2)",
-        "The following subjects are preferred:<br />\nBiology,  Chemistry,  Information and Communication Technology, Physics"
+        "The following subjects are preferred: Biology, Chemistry, Information and Communication Technology, Physics"
       ]
     },
     {
@@ -14477,7 +14748,16 @@
           "Physics": 2,
           "Geography": 2
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 2
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -14501,10 +14781,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 48,
-        "median": 44.25,
-        "lowerQuartile": 38.25,
-        "year": 2025,
+        "upperQuartile": 47.5,
+        "median": 42.75,
+        "lowerQuartile": 41.75,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -14514,7 +14794,7 @@
         "數學最低第 2 級",
         "選修科目最低第 3 級",
         "選修科目最低第 3 級",
-        "The following subjects are preferred:<br />\nMathematics (Module 1 or 2), Geography, Physics"
+        "The following subjects are preferred: Mathematics (Module 1 or 2), Geography, Physics"
       ]
     },
     {
@@ -14553,7 +14833,24 @@
         "subjectWeights": {
           "Mathematics": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2"
+            ],
+            "weight": 2
+          },
+          {
+            "count": 1,
+            "subjects": [
+              "Economics",
+              "ICT"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -14577,10 +14874,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 37,
-        "median": 35,
-        "lowerQuartile": 34.75,
-        "year": 2025,
+        "upperQuartile": 40,
+        "median": 38.5,
+        "lowerQuartile": 38,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -14590,7 +14887,7 @@
         "數學最低第 3 級",
         "選修科目最低第 3 級",
         "選修科目最低第 3 級",
-        "The following subjects are preferred:<br />\nMathematics (Module 1 or 2), Economics, Information and Communication Technology",
+        "The following subjects are preferred: Mathematics (Module 1 or 2), Economics, Information and Communication Technology",
         "Taking Mathematics (Module 1 or 2) will be strongly recommended"
       ]
     },
@@ -14654,10 +14951,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 28.7,
-        "median": 27.65,
-        "lowerQuartile": 26.6,
-        "year": 2025,
+        "upperQuartile": 29.15,
+        "median": 28.1,
+        "lowerQuartile": 27.65,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -14729,10 +15026,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 28,
+        "upperQuartile": 29.5,
         "median": 28,
         "lowerQuartile": 26.5,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -14742,7 +15039,7 @@
         "數學最低第 3 級",
         "選修科目最低第 3 級",
         "選修科目最低第 3 級",
-        "In addition to fulfilling the University requirements, applicants are required to submit a design portfolio to the General Office of the School of Architecture directly.<br />\nPortfolio guidelines and additional information can be found on the School website: https://www.arch.cuhk.edu.hk/programmes/degrees/bssc-as"
+        "In addition to fulfilling the University requirements, applicants are required to submit a design portfolio to the General Office of the School of Architecture directly. Portfolio guidelines and additional information can be found on the School website: https://www.arch.cuhk.edu.hk/programmes/degrees/bssc-as"
       ]
     },
     {
@@ -14781,7 +15078,19 @@
         "subjectWeights": {
           "Mathematics": 1.5
         },
-        "weightedSelections": [],
+        "weightedSelections": [
+          {
+            "count": 1,
+            "subjects": [
+              "M1",
+              "M2",
+              "Chemistry",
+              "Physics",
+              "Economics"
+            ],
+            "weight": 1.5
+          }
+        ],
         "mutuallyExclusive": [
           [
             "M1",
@@ -14806,9 +15115,9 @@
       },
       "scoreStatistics": {
         "upperQuartile": 33.75,
-        "median": 31.5,
-        "lowerQuartile": 30.75,
-        "year": 2025,
+        "median": 32.75,
+        "lowerQuartile": 31.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -14881,10 +15190,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 35.25,
-        "median": 33,
-        "lowerQuartile": 31.5,
-        "year": 2025,
+        "upperQuartile": 36.75,
+        "median": 33.75,
+        "lowerQuartile": 32.25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -14954,10 +15263,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 26,
+        "upperQuartile": 26.5,
         "median": 26,
-        "lowerQuartile": 24.5,
-        "year": 2025,
+        "lowerQuartile": 26,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -15030,10 +15339,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 28.625,
-        "median": 27.5,
-        "lowerQuartile": 27.25,
-        "year": 2025,
+        "upperQuartile": 29.375,
+        "median": 28.25,
+        "lowerQuartile": 28.25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -15106,10 +15415,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 31.7,
-        "median": 28.95,
-        "lowerQuartile": 27.8,
-        "year": 2025,
+        "upperQuartile": 31.25,
+        "median": 29.75,
+        "lowerQuartile": 29.3,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -15181,10 +15490,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 31.55,
-        "median": 29.15,
-        "lowerQuartile": 27.2,
-        "year": 2025,
+        "upperQuartile": null,
+        "median": null,
+        "lowerQuartile": null,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -15257,10 +15566,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 36.75,
-        "median": 33.75,
-        "lowerQuartile": 32.25,
-        "year": 2025,
+        "upperQuartile": 37.5,
+        "median": 34,
+        "lowerQuartile": 33,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -15330,10 +15639,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 29,
-        "median": 27.5,
+        "upperQuartile": 30.5,
+        "median": 29,
         "lowerQuartile": 27.5,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -15406,9 +15715,9 @@
       },
       "scoreStatistics": {
         "upperQuartile": 28,
-        "median": 26.5,
+        "median": 27.25,
         "lowerQuartile": 26.5,
-        "year": 2025,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -15480,10 +15789,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 26.5,
-        "median": 26.5,
-        "lowerQuartile": 25.75,
-        "year": 2025,
+        "upperQuartile": 29.5,
+        "median": 28.5,
+        "lowerQuartile": 27.25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -15553,10 +15862,10 @@
         "scoreRemark": ""
       },
       "scoreStatistics": {
-        "upperQuartile": 24.5,
-        "median": 23.5,
-        "lowerQuartile": 23,
-        "year": 2025,
+        "upperQuartile": 27.5,
+        "median": 26,
+        "lowerQuartile": 25,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -15626,10 +15935,10 @@
         "scoreRemark": "This is a new programme to be introduced in the 2026-27 academic year."
       },
       "scoreStatistics": {
-        "upperQuartile": null,
-        "median": null,
-        "lowerQuartile": null,
-        "year": 2025,
+        "upperQuartile": 32,
+        "median": 27.5,
+        "lowerQuartile": 26,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -15706,10 +16015,10 @@
         "scoreRemark": "The LLB programme's scoring formula has been revised for 2026 entry."
       },
       "scoreStatistics": {
-        "upperQuartile": null,
-        "median": null,
-        "lowerQuartile": null,
-        "year": 2025,
+        "upperQuartile": 32,
+        "median": 29,
+        "lowerQuartile": 27.5,
+        "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
       },
@@ -38661,8 +38970,8 @@
               "Biology": 1.5,
               "Chemistry": 1.5,
               "M1": 1.5,
-              "Physics": 1.5,
-              "M2": 1.5
+              "M2": 1.5,
+              "Physics": 1.5
             }
           }
         ],
@@ -38728,8 +39037,8 @@
           "Biology": 1.5,
           "Chemistry": 1.5,
           "M1": 1.5,
-          "Physics": 1.5,
-          "M2": 1.5
+          "M2": 1.5,
+          "Physics": 1.5
         }
       },
       "scoreStatistics": {
@@ -41274,11 +41583,20 @@
             "weights": {
               "Biology": 2,
               "Chemistry": 2,
+              "Combined Science": 2,
+              "Combined Science: Biology + Chemistry": 2,
+              "Combined Science: Biology + Physics": 2,
+              "Combined Science: Physics + Chemistry": 2,
+              "Design and Applied Technology": 2,
               "ICT": 2,
+              "Integrated Science": 2,
               "M1": 2,
+              "M2": 2,
               "Physics": 2,
-              "M2": 2
-            }
+              "Technology and Living (Fashion, Clothing and Textiles)": 2,
+              "Technology and Living (Food Science and Technology)": 2
+            },
+            "weight": 1.5
           }
         ],
         "gradePoints": {
@@ -41342,10 +41660,18 @@
         "subjectWeights": {
           "Biology": 2,
           "Chemistry": 2,
+          "Combined Science": 2,
+          "Combined Science: Biology + Chemistry": 2,
+          "Combined Science: Biology + Physics": 2,
+          "Combined Science: Physics + Chemistry": 2,
+          "Design and Applied Technology": 2,
           "ICT": 2,
+          "Integrated Science": 2,
           "M1": 2,
+          "M2": 2,
           "Physics": 2,
-          "M2": 2
+          "Technology and Living (Fashion, Clothing and Textiles)": 2,
+          "Technology and Living (Food Science and Technology)": 2
         }
       },
       "scoreStatistics": {
@@ -41528,8 +41854,8 @@
               "Biology": 1.3,
               "Chemistry": 1.3,
               "M1": 1.3,
-              "Physics": 1.3,
-              "M2": 1.3
+              "M2": 1.3,
+              "Physics": 1.3
             }
           }
         ],
@@ -41595,8 +41921,8 @@
           "Biology": 1.3,
           "Chemistry": 1.3,
           "M1": 1.3,
-          "Physics": 1.3,
-          "M2": 1.3
+          "M2": 1.3,
+          "Physics": 1.3
         }
       },
       "scoreStatistics": {
@@ -42037,6 +42363,104 @@
         "upperQuartile": 28,
         "median": 27,
         "lowerQuartile": 26,
+        "year": 2026,
+        "entryYear": 2026,
+        "sourceUrl": "https://admissions.hku.hk/sites/default/files/2026-09/HKU-JUPAS-Admissions-Information-2027.pdf"
+      },
+      "programmeRequirements": [
+        "English Language: Level 3",
+        "Chinese Language: Level 3",
+        "Mathematics: Level 2",
+        "Liberal Studies / Citizenship and Social Development: Level 2 / Attained",
+        "Elective Subject 1: Level 3",
+        "Elective Subject 2: Level 3"
+      ]
+    },
+    {
+      "code": "JS6743",
+      "institutionId": "hku",
+      "institutionShort": "港大",
+      "institutionName": "香港大學",
+      "institutionEnglish": "The University of Hong Kong",
+      "fundingCategory": "UGC-funded",
+      "shortName": "BSocSc(Elite)",
+      "title": "Bachelor of Social Sciences Elite Programme",
+      "titleZh": "社會科學學士精英課程",
+      "sourceUrl": "https://www.jupas.edu.hk/en/programme/hku/JS6743",
+      "scoreModel": {
+        "verified": true,
+        "calculatorSupported": true,
+        "cycle": "2027/28",
+        "formulaText": "Best 5 Subjects #",
+        "groups": [
+          {
+            "label": "最佳 5 科",
+            "count": 5,
+            "subjects": null,
+            "weights": {}
+          }
+        ],
+        "gradePoints": {
+          "1": 1,
+          "2": 2,
+          "3": 3,
+          "4": 4,
+          "5": 5.5,
+          "5**": 8.5,
+          "5*": 7,
+          "U": 0
+        },
+        "languagePoints": {
+          "French": {
+            "A2": 4,
+            "B1": 5.5,
+            "B2": 7,
+            "C1": 8.5,
+            "C2": 8.5
+          },
+          "German": {
+            "A2": 4,
+            "B1": 5.5,
+            "B2": 7,
+            "C1": 8.5,
+            "C2": 8.5
+          },
+          "Japanese": {
+            "N3": 4,
+            "N2": 7,
+            "N1": 8.5
+          },
+          "Korean": {
+            "Level 3": 4,
+            "Level 4": 5.5,
+            "Level 5": 7,
+            "Level 6": 8.5
+          },
+          "Spanish": {
+            "A2": 4,
+            "B1": 5.5,
+            "B2": 7,
+            "C1": 8.5,
+            "C2": 8.5
+          },
+          "Urdu": {
+            "E": 1,
+            "D": 2,
+            "C": 3,
+            "B": 4,
+            "B+": 5.5,
+            "B++": 7,
+            "A": 8.5,
+            "A+": 8.5,
+            "A++": 8.5
+          }
+        },
+        "categoryCLimit": 1,
+        "sourceUrl": "https://admissions.hku.hk/sites/default/files/2026-09/HKU-JUPAS-Admissions-Information-2027.pdf",
+        "formulaDataUrl": "https://admissions.hku.hk/api/hkdse/admission_standard",
+        "subjectWeights": {}
+      },
+      "scoreStatistics": {
         "year": 2026,
         "entryYear": 2026,
         "sourceUrl": "https://admissions.hku.hk/sites/default/files/2026-09/HKU-JUPAS-Admissions-Information-2027.pdf"
@@ -43714,8 +44138,8 @@
               "Biology": 1.5,
               "Chemistry": 1.5,
               "M1": 1.5,
-              "Physics": 1.5,
-              "M2": 1.5
+              "M2": 1.5,
+              "Physics": 1.5
             }
           }
         ],
@@ -43781,8 +44205,8 @@
           "Biology": 1.5,
           "Chemistry": 1.5,
           "M1": 1.5,
-          "Physics": 1.5,
-          "M2": 1.5
+          "M2": 1.5,
+          "Physics": 1.5
         }
       },
       "scoreStatistics": {
@@ -49592,7 +50016,7 @@
       "scoreStatistics": null
     }
   ],
-  "admissionsSnapshot": "2026-11-06",
+  "admissionsSnapshot": "2026-11-24",
   "admissionsSources": [
     {
       "institutionId": "hku",
@@ -49637,7 +50061,7 @@
     },
     {
       "institutionId": "cuhk",
-      "label": "CUHK 2026-entry admission grades (2025 admissions)",
+      "label": "CUHK 2026 admission grades (2026 entry)",
       "url": "https://admission.cuhk.edu.hk/wp-content/uploads/2026/10/Admission-Grades-2026.pdf"
     },
     {

@@ -1,4 +1,16 @@
 import { calculateAdmissionScore } from "./scoring.js";
+import {
+  countEnteredSubjects,
+  createEmptyGrades,
+  createProfile,
+  deleteProfile,
+  getActiveProfile,
+  loadProfileStore,
+  renameProfile,
+  saveProfileStore,
+  switchProfile,
+  updateActiveProfileGrades,
+} from "./profile.js";
 
 const PAGE_SIZE = 12;
 const GRADE_FIELDS = [
@@ -66,6 +78,8 @@ const state = {
   funding: "all",
   search: "",
   selectedProgramme: null,
+  profileStore: loadProfileStore(),
+  profileEditorMode: null,
 };
 
 const $ = (selector) => document.querySelector(selector);
@@ -175,12 +189,13 @@ function renderElectiveSubjects() {
       .filter((subject) => !coreSubjects.has(subject))
       .map((subject) => [subject, subject]),
   ]).entries()];
-  for (const select of $("#elective-grade-inputs").querySelectorAll("[data-elective-subject]")) {
-    const selected = select.value;
+  const savedElectives = getActiveProfile(state.profileStore)?.grades?.electives ?? [];
+  [...$("#elective-grade-inputs").querySelectorAll("[data-elective-subject]")].forEach((select, index) => {
+    const selected = select.value || savedElectives[index]?.subject || "";
     select.innerHTML = `<option value="">選擇科目</option>${subjects
       .map(([key, label]) => `<option value="${escapeHTML(key)}">${escapeHTML(label)}</option>`).join("")}`;
     if (subjects.some(([key]) => key === selected)) select.value = selected;
-  }
+  });
 }
 
 function renderCategoryCGrades() {
@@ -188,8 +203,9 @@ function renderCategoryCGrades() {
   const languagePoints = programme?.scoreModel?.categoryCLimit ? programme.scoreModel.languagePoints : null;
   const languageSelect = $("#category-c-exam");
   const gradeSelect = $("#grade-other-language");
-  const selectedLanguage = languageSelect.value;
-  const selectedGrade = gradeSelect.value;
+  const savedCatC = getActiveProfile(state.profileStore)?.grades?.categoryC ?? { language: "", grade: "" };
+  const selectedLanguage = languageSelect.value || savedCatC.language;
+  const selectedGrade = gradeSelect.value || (selectedLanguage === savedCatC.language ? savedCatC.grade : "");
   languageSelect.innerHTML = `<option value="">選擇語言</option>${CATEGORY_C_LANGUAGES
     .map((language) => `<option value="${language}">${CATEGORY_C_LABELS[language]}</option>`).join("")}`;
   if (CATEGORY_C_LANGUAGES.includes(selectedLanguage)) languageSelect.value = selectedLanguage;
@@ -204,10 +220,13 @@ function renderCategoryBGrades() {
   const model = state.selectedProgramme?.scoreModel;
   const subjects = model?.categoryBSubjects ?? [];
   const row = $("#category-b-row");
-  const previous = [...row.querySelectorAll(".category-b-entry")].map((entry) => ({
+  const domEntries = [...row.querySelectorAll(".category-b-entry")].map((entry) => ({
     subject: entry.querySelector("[data-category-b-subject]").value,
     grade: entry.querySelector("[data-category-b-grade]").value,
   }));
+  const previous = domEntries.length > 0
+    ? domEntries
+    : getActiveProfile(state.profileStore)?.grades?.categoryB ?? [];
   const count = subjects.length ? Math.max(1, model?.categoryBLimit ?? 1) : 0;
   row.hidden = count === 0;
   const grades = Object.keys(model?.categoryBPoints ?? {});
@@ -232,6 +251,106 @@ function renderCategoryBGrades() {
   });
 }
 
+function readGradesFromUI() {
+  const activeGrades = getActiveProfile(state.profileStore)?.grades ?? createEmptyGrades();
+  const core = Object.fromEntries(
+    [...$("#core-grade-inputs").querySelectorAll("[data-subject]")].map((select) => [select.dataset.subject, select.value]),
+  );
+  const electives = [...$("#elective-grade-inputs").querySelectorAll(".elective-grade-row")].map((row) => ({
+    subject: row.querySelector("[data-elective-subject]").value,
+    grade: row.querySelector("[data-elective-grade]").value,
+  }));
+  const language = $("#category-c-exam").value;
+  const gradeSelect = $("#grade-other-language");
+  const categoryC = {
+    language,
+    grade: !language
+      ? ""
+      : !gradeSelect.disabled
+        ? gradeSelect.value
+        : activeGrades.categoryC?.language === language
+          ? activeGrades.categoryC.grade
+          : "",
+  };
+  const categoryBRow = $("#category-b-row");
+  const categoryB = !categoryBRow.hidden
+    ? [...categoryBRow.querySelectorAll(".category-b-entry")].map((entry) => ({
+        subject: entry.querySelector("[data-category-b-subject]").value,
+        grade: entry.querySelector("[data-category-b-grade]").value,
+      }))
+    : activeGrades.categoryB ?? [];
+
+  return { core, electives, categoryB, categoryC };
+}
+
+function applyProfileGradesToUI(grades) {
+  for (const select of $("#core-grade-inputs").querySelectorAll("[data-subject]")) {
+    select.value = grades?.core?.[select.dataset.subject] ?? "";
+  }
+  renderElectiveSubjects();
+  [...$("#elective-grade-inputs").querySelectorAll(".elective-grade-row")].forEach((row, index) => {
+    const entry = grades?.electives?.[index];
+    const subjectSelect = row.querySelector("[data-elective-subject]");
+    const gradeSelect = row.querySelector("[data-elective-grade]");
+    subjectSelect.value = entry?.subject ?? "";
+    if (subjectSelect.value !== (entry?.subject ?? "")) subjectSelect.value = "";
+    gradeSelect.value = entry?.grade ?? "";
+  });
+  $("#category-c-exam").value = grades?.categoryC?.language ?? "";
+  $("#grade-other-language").value = "";
+  renderCategoryCGrades();
+  if (!$("#grade-other-language").disabled && grades?.categoryC?.grade) {
+    $("#grade-other-language").value = grades.categoryC.grade;
+  }
+  $("#category-b-row").innerHTML = "";
+  renderCategoryBGrades();
+}
+
+function renderProfilePanel(statusText) {
+  const select = $("#profile-select");
+  const active = getActiveProfile(state.profileStore);
+  select.innerHTML = state.profileStore.profiles
+    .map((profile) => `<option value="${escapeHTML(profile.id)}">${escapeHTML(profile.name)}</option>`)
+    .join("");
+  if (active) select.value = active.id;
+  $("#profile-delete-btn").disabled = state.profileStore.profiles.length <= 1;
+  $("#profile-subject-count").textContent = `${countEnteredSubjects(active?.grades)} 科`;
+  if (statusText) $("#profile-status").textContent = statusText;
+}
+
+function closeProfilePrompts() {
+  state.profileEditorMode = null;
+  $("#profile-editor").hidden = true;
+  $("#profile-confirm").hidden = true;
+}
+
+function openProfileEditor(mode) {
+  const active = getActiveProfile(state.profileStore);
+  $("#profile-confirm").hidden = true;
+  state.profileEditorMode = mode;
+  $("#profile-editor").hidden = false;
+  const input = $("#profile-name-input");
+  const copyWrap = $("#profile-copy-wrap");
+  if (mode === "rename") {
+    copyWrap.hidden = true;
+    input.value = active?.name ?? "";
+    input.placeholder = "輸入新的檔案名稱";
+  } else {
+    copyWrap.hidden = false;
+    $("#profile-copy-grades").checked = true;
+    input.value = "";
+    input.placeholder = "輸入檔案名稱（如 Mock 成績）";
+  }
+  input.focus();
+  if (mode === "rename") input.select();
+}
+
+function persistCurrentGrades(statusText = "已儲存至瀏覽器") {
+  state.profileStore = updateActiveProfileGrades(state.profileStore, readGradesFromUI());
+  const saved = saveProfileStore(state.profileStore);
+  renderProfilePanel(saved ? statusText : "瀏覽器暫無法寫入");
+}
+
 function findProgramme(code) {
   const normalized = code.toUpperCase().replace(/[\s-]/g, "");
   const fullCode = normalized.startsWith("JS") ? normalized : `JS${normalized}`;
@@ -245,6 +364,10 @@ function showProgramme(programme) {
     ? `${programme.institutionShort} · ${programme.titleZh || programme.title}`
     : "未找到課程，請檢查課程編號。";
   selectedProgramme.dataset.found = String(Boolean(programme));
+  if (programme) {
+    state.profileStore = { ...state.profileStore, lastProgrammeCode: programme.code };
+    saveProfileStore(state.profileStore);
+  }
   renderElectiveSubjects();
   renderCategoryCGrades();
   renderCategoryBGrades();
@@ -560,7 +683,18 @@ function attachEvents() {
     const digits = event.target.value.replace(/\D/g, "").slice(0, 4);
     if (digits !== event.target.value) event.target.value = digits;
   });
-  $("#category-c-exam").addEventListener("change", () => renderCategoryCGrades());
+  $("#core-grade-inputs").addEventListener("change", () => persistCurrentGrades());
+  $("#elective-grade-inputs").addEventListener("change", () => persistCurrentGrades());
+  $("#category-c-exam").addEventListener("change", () => {
+    state.profileStore = updateActiveProfileGrades(state.profileStore, {
+      ...readGradesFromUI(),
+      categoryC: { language: $("#category-c-exam").value, grade: "" },
+    });
+    $("#grade-other-language").value = "";
+    renderCategoryCGrades();
+    persistCurrentGrades();
+  });
+  $("#grade-other-language").addEventListener("change", () => persistCurrentGrades());
   $("#calculate-score").addEventListener("click", calculate);
   $("#clear-grades").addEventListener("click", () => {
     $("#core-grade-inputs, #elective-grade-inputs").querySelectorAll("select").forEach((select) => { select.value = ""; });
@@ -569,11 +703,83 @@ function attachEvents() {
     $("#category-c-exam").value = "";
     $("#grade-other-language").value = "";
     $("#grade-other-language").disabled = true;
+    state.profileStore = updateActiveProfileGrades(state.profileStore, createEmptyGrades());
+    saveProfileStore(state.profileStore);
+    renderProfilePanel("已清除目前檔案成績");
     setResult("成績已清除。");
   });
   $("#category-b-row").addEventListener("change", (event) => {
     if (event.target.matches("[data-category-b-subject]")) renderCategoryBGrades();
+    persistCurrentGrades();
   });
+
+  $("#profile-select").addEventListener("change", (event) => {
+    closeProfilePrompts();
+    state.profileStore = switchProfile(state.profileStore, event.target.value);
+    saveProfileStore(state.profileStore);
+    const active = getActiveProfile(state.profileStore);
+    applyProfileGradesToUI(active.grades);
+    renderProfilePanel("已切換檔案");
+    setResult(`已切換至「${active.name}」成績檔案。`);
+  });
+  $("#profile-add-btn").addEventListener("click", () => openProfileEditor("create"));
+  $("#profile-rename-btn").addEventListener("click", () => openProfileEditor("rename"));
+  $("#profile-editor-cancel").addEventListener("click", closeProfilePrompts);
+  $("#profile-name-input").addEventListener("keydown", (event) => {
+    if (event.key === "Escape") closeProfilePrompts();
+  });
+  $("#profile-editor").addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = $("#profile-name-input").value;
+    if (state.profileEditorMode === "rename") {
+      const active = getActiveProfile(state.profileStore);
+      const { store, error } = renameProfile(state.profileStore, active.id, name);
+      if (error) {
+        $("#profile-status").textContent = error;
+        $("#profile-name-input").focus();
+        return;
+      }
+      state.profileStore = store;
+      saveProfileStore(state.profileStore);
+      closeProfilePrompts();
+      renderProfilePanel("已更新檔案名稱");
+      return;
+    }
+
+    const copyCurrent = $("#profile-copy-grades").checked;
+    const { store, profile, error } = createProfile(state.profileStore, { name, copyCurrent });
+    if (error) {
+      $("#profile-status").textContent = error;
+      $("#profile-name-input").focus();
+      return;
+    }
+    state.profileStore = store;
+    saveProfileStore(state.profileStore);
+    closeProfilePrompts();
+    applyProfileGradesToUI(profile.grades);
+    renderProfilePanel("已建立新檔案");
+    setResult(`已建立並切換至「${profile.name}」。`);
+  });
+  $("#profile-delete-btn").addEventListener("click", () => {
+    if (state.profileStore.profiles.length <= 1) return;
+    $("#profile-editor").hidden = true;
+    const active = getActiveProfile(state.profileStore);
+    $("#profile-confirm-text").textContent = `確定刪除「${active.name}」？`;
+    $("#profile-confirm").hidden = false;
+  });
+  $("#profile-confirm-no").addEventListener("click", closeProfilePrompts);
+  $("#profile-confirm-yes").addEventListener("click", () => {
+    const active = getActiveProfile(state.profileStore);
+    const { store } = deleteProfile(state.profileStore, active.id);
+    state.profileStore = store;
+    saveProfileStore(state.profileStore);
+    closeProfilePrompts();
+    const nextActive = getActiveProfile(state.profileStore);
+    applyProfileGradesToUI(nextActive.grades);
+    renderProfilePanel("已刪除檔案");
+    setResult(`已切換至「${nextActive.name}」成績檔案。`);
+  });
+
   $(".dialog-close").addEventListener("click", () => $("#programme-dialog").close());
   $("#programme-dialog").addEventListener("click", (event) => {
     if (event.target === $("#programme-dialog")) $("#programme-dialog").close();
@@ -589,6 +795,9 @@ function attachEvents() {
 async function init() {
   renderGrades();
   renderCategoryBGrades();
+  const initialProfile = getActiveProfile(state.profileStore);
+  applyProfileGradesToUI(initialProfile?.grades);
+  renderProfilePanel(countEnteredSubjects(initialProfile?.grades) > 0 ? "已載入本機檔案" : "本機自動儲存");
   try {
     const response = await fetch(new URL("../data/programmes.json", import.meta.url));
     if (!response.ok) throw new Error(`Catalogue request failed: ${response.status}`);
@@ -600,6 +809,13 @@ async function init() {
     updateOverview();
     renderProgrammes();
     attachEvents();
+    if (state.profileStore.lastProgrammeCode) {
+      const lastProgramme = findProgramme(state.profileStore.lastProgrammeCode);
+      if (lastProgramme) {
+        $("#calc-code").value = lastProgramme.code.replace(/^JS/i, "");
+        showProgramme(lastProgramme);
+      }
+    }
   } catch (error) {
     console.error("Unable to load the JUPAS catalogue.", error);
     $("#result-count").textContent = "目錄載入失敗";
